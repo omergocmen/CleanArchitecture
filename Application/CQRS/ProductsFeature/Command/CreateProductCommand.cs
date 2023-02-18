@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces.Respositories;
+using AutoMapper;
 using Domain.Entities.Product;
 using MediatR;
 using System;
@@ -17,25 +18,19 @@ namespace Application.CQRS.ProductFeature.Command
         public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, CreateProductViewModel>
         {
             private readonly IProductRepository _repository;
-            public CreateProductCommandHandler(IProductRepository repository)
+            private readonly IMapper _mapper;
+            public CreateProductCommandHandler(IProductRepository repository, IMapper mappter)
             {
                 _repository = repository;
+                _mapper = mappter;
             }
 
             public async Task<CreateProductViewModel> Handle(CreateProductCommand request, CancellationToken cancellationToken)
             {
-                Product product = new Product();
-                product.ProductName = request.ProductName;
-                product.Price = request.Price;
-                product.Stock = request.Stock;
-
-
+                Product product = _mapper.Map<Product>(request);
                 var result = await _repository.AddAsync(product);
-                CreateProductViewModel model = new CreateProductViewModel();
-                model.ProductId=result.Guid;
-                model.ProductName = result.ProductName;
+                CreateProductViewModel model= _mapper.Map<CreateProductViewModel>(result);
                 return model;
-
             }
         }
     }

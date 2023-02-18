@@ -8,7 +8,7 @@ namespace Domain.Entities.Product
 {
     public class CreateProductViewModel
     {
-        public Guid ProductId { get; set; }
+        public Guid Guid { get; set; }
         public string ProductName { get; set; }
     }
 }

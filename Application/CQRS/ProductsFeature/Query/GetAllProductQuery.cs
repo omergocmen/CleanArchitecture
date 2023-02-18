@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces.Respositories;
+using AutoMapper;
 using Domain.Entities.Product;
 using Domain.Pagination;
 using MediatR;
@@ -17,26 +18,16 @@ namespace Application.CQRS.ProductsFeature.Query
         public class GetAllProductQueryHandler : IRequestHandler<GetAllProductQuery, List<ProductViewModel>>
         {
             private readonly IProductRepository _productRepository;
-            public GetAllProductQueryHandler(IProductRepository productRepository)
+            private readonly IMapper _mapper;
+            public GetAllProductQueryHandler(IProductRepository productRepository,IMapper mapper)
             {
                 _productRepository = productRepository;
+                _mapper = mapper;
             }
             public async Task<List<ProductViewModel>> Handle(GetAllProductQuery request, CancellationToken cancellationToken)
             {
-                List<ProductViewModel> productViewModels = new List<ProductViewModel>();
                 var result = await _productRepository.GetAllWithPaginationAsync(pageRequest: request.PageRequest);
-
-                foreach (var item in result)
-                {
-                    productViewModels.Add(new ProductViewModel
-                    {
-                        ProductId = item.Guid,
-                        ProductName = item.ProductName,
-                        Price = item.Price,
-                        Stock = item.Stock,
-                        IsActive = item.IsActive
-                    });
-                }
+                List<ProductViewModel> productViewModels = _mapper.Map<List<ProductViewModel>>(result);
                 return productViewModels;
             }
         }

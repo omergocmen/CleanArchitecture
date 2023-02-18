@@ -9,9 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csp
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Persistence", "Persistence\Persistence.csproj", "{2D8101E3-2CDA-4478-9FFD-0A828D627D74}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{AB1B6EA2-4D0F-4DB5-B34D-78EFD7D88072}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi", "API\WebApi.csproj", "{AB1B6EA2-4D0F-4DB5-B34D-78EFD7D88072}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{3A6C5319-51E1-41B6-B03F-440017AB7064}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{3A6C5319-51E1-41B6-B03F-440017AB7064}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
