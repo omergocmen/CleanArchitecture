@@ -1,5 +1,6 @@
 ﻿using Application.Interfaces.Respositories;
 using Domain.Common;
+using Domain.Pagination;
 using Microsoft.EntityFrameworkCore;
 using Persistence.Context;
 using System;
@@ -19,38 +20,40 @@ namespace Persistence.Repositories
         {
             _context = context;
         }
-        public TEntity Add(TEntity entity)
+        public async Task<TEntity> AddAsync(TEntity entity)
         {
             var addedEntity = _context.Entry(entity);
             addedEntity.State = EntityState.Added;
-            var item = _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return entity;
         }
 
-        public void Delete(TEntity entity)
+        public async Task<TEntity> DeleteAsync(TEntity entity)
         {
             var deletedEntity = _context.Entry(entity);
             deletedEntity.State = EntityState.Deleted;
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
+            return entity;
         }
 
-        public void Update(TEntity entity)
+        public async Task<TEntity> UpdateAsync(TEntity entity)
         {
             var entry = _context.Attach(entity);
             var updated = entry.CurrentValues.Clone();
             entry.Reload();
             entry.CurrentValues.SetValues(updated);
             entry.State = EntityState.Modified;
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
+            return entity;
         }
 
-        public TEntity Get(Expression<Func<TEntity, bool>> filter = null)
+        public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> filter = null)
         {
             DbSet<TEntity> entities = _context.Set<TEntity>();
-            return entities.SingleOrDefault(filter);
+            return await entities.SingleOrDefaultAsync(filter);
         }
 
-        public List<TEntity> GetAll(Expression<Func<TEntity, bool>> filter = null)
+        public async Task<List<TEntity>> GetAllAsync(Expression<Func<TEntity, bool>> filter = null)
         {
             var item = _context.Set<TEntity>().ToList();
 
@@ -59,11 +62,11 @@ namespace Persistence.Repositories
             : _context.Set<TEntity>().Where(filter).ToList();
         }
 
-        public List<TEntity> GetAllWithPagination(Expression<Func<TEntity, bool>> filter = null, int PageSize = 10, int PageIndex = 1)
+        public async Task<List<TEntity>> GetAllWithPaginationAsync(PageRequest pageRequest, Expression<Func<TEntity, bool>> filter = null)
         {
             return filter == null
-            ? _context.Set<TEntity>().Skip((PageIndex - 1) * PageSize).Take(PageSize).ToList()
-            : _context.Set<TEntity>().Where(filter).Skip((PageIndex - 1) * PageSize).Take(PageSize).ToList();
+            ? _context.Set<TEntity>().Skip((pageRequest.Page - 1) * pageRequest.PageSize).Take(pageRequest.PageSize).ToList()
+            : _context.Set<TEntity>().Where(filter).Skip((pageRequest.Page- 1) * pageRequest.PageSize).Take(pageRequest.PageSize).ToList();
         }
 
     }

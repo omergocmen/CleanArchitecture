@@ -1,6 +1,6 @@
 ﻿using Application.Interfaces.Respositories;
 using Application.Interfaces.Services;
-using Domain.Entities;
+using Domain.Entities.Product;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,9 +16,9 @@ namespace Persistence.Services
         {
             _productRepository = productRepository;
         }
-        public List<Product> GetAllProducts()
+        /*public List<Product> GetAllProducts()
         {
             return _productRepository.GetAll();
-        }
+        }*/
     }
 }

@@ -1,5 +1,5 @@
 ﻿using Application.Interfaces.Respositories;
-using Domain.Entities;
+using Domain.Entities.Product;
 using Persistence.Context;
 using System;
 using System.Collections.Generic;
