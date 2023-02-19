@@ -3,7 +3,7 @@ using Application.CQRS.ProductsFeature.Command;
 using Application.CQRS.ProductsFeature.Query;
 using Application.Interfaces.Services;
 using Domain.Entities;
-using Domain.Entities.Product;
+using Domain.Entities.ProductDomain;
 using Domain.Pagination;
 using Microsoft.AspNetCore.Mvc;
 

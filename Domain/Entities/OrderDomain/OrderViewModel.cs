@@ -4,14 +4,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Domain.Entities.Product
+namespace Domain.Entities.OrderDomain
 {
-    public class ProductViewModel
+    public class OrderViewModel
     {
         public Guid Guid { get; set; }
-        public string ProductName { get; set; }
-        public double Price { get; set; }
-        public int Stock { get; set; }
+        public string Address { get; set; }
+        public string Description { get; set; }
+        public Guid CustomerId { get; set; }
         public bool IsActive { get; set; }
     }
 }

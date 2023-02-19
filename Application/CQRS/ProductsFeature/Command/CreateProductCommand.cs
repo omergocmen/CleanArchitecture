@@ -1,6 +1,6 @@
 ﻿using Application.Interfaces.Respositories;
 using AutoMapper;
-using Domain.Entities.Product;
+using Domain.Entities.ProductDomain;
 using MediatR;
 using System;
 using System.Collections.Generic;
@@ -15,6 +15,7 @@ namespace Application.CQRS.ProductFeature.Command
         public string ProductName { get; set; }
         public double Price { get; set; }
         public int Stock { get; set; }
+        public Guid CategoryId { get; set; }
         public class CreateProductCommandHandler : IRequestHandler<CreateProductCommand, CreateProductViewModel>
         {
             private readonly IProductRepository _repository;

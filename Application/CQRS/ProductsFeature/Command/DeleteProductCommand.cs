@@ -1,6 +1,6 @@
 ﻿using Application.Interfaces.Respositories;
 using AutoMapper;
-using Domain.Entities.Product;
+using Domain.Entities.ProductDomain;
 using MediatR;
 using System;
 using System.Collections.Generic;

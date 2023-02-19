@@ -1,6 +1,6 @@
 ﻿using Application.Interfaces.Respositories;
 using Application.Interfaces.Services;
-using Domain.Entities.Product;
+using Domain.Entities.ProductDomain;
 using System;
 using System.Collections.Generic;
 using System.Linq;

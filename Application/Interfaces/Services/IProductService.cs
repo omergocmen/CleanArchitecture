@@ -1,4 +1,4 @@
-﻿using Domain.Entities.Product;
+﻿using Domain.Entities.ProductDomain;
 using System;
 using System.Collections.Generic;
 using System.Linq;

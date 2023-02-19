@@ -1,4 +1,5 @@
-﻿using Domain.Entities.ProductDomain;
+﻿using Domain.Entities.OrderDomain;
+using Domain.Entities.ProductDomain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Application.Interfaces.Respositories
 {
-    public interface IProductRepository : IEntityRepository<Product>
+    public interface IOrderRepository : IEntityRepository<Order>
     {
     }
 }

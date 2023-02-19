@@ -1,6 +1,6 @@
 ﻿using Application.Interfaces.Respositories;
 using AutoMapper;
-using Domain.Entities.Product;
+using Domain.Entities.ProductDomain;
 using Domain.Pagination;
 using MediatR;
 using System;

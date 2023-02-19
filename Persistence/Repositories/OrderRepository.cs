@@ -1,4 +1,5 @@
 ﻿using Application.Interfaces.Respositories;
+using Domain.Entities.OrderDomain;
 using Domain.Entities.ProductDomain;
 using Persistence.Context;
 using System;
@@ -9,8 +10,8 @@ using System.Threading.Tasks;
 
 namespace Persistence.Repositories
 {
-    public class ProductRepository : EfEntityRepositoryBase<Product>, IProductRepository
+    public class OrderRepository : EfEntityRepositoryBase<Order>, IOrderRepository
     {
-        public ProductRepository(ApplicationContext context) : base(context){}
+        public OrderRepository(ApplicationContext context) : base(context){}
     }
 }

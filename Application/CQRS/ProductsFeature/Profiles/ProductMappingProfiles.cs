@@ -2,7 +2,7 @@
 using Application.CQRS.ProductsFeature.Command;
 using Application.CQRS.ProductsFeature.Query;
 using AutoMapper;
-using Domain.Entities.Product;
+using Domain.Entities.ProductDomain;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace Application.CQRS.ProductsFeature.Profiles
 {
-    public class MappingProfiles : Profile
+    public class ProductMappingProfiles : Profile
     {
-        public MappingProfiles()
+        public ProductMappingProfiles()
         {
             CreateMap<Product, ProductViewModel>().ReverseMap();
             CreateMap<Product, CreateProductViewModel>().ReverseMap();
