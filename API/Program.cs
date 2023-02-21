@@ -1,4 +1,5 @@
 using Application;
+using Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.EntityFrameworkCore;
 using Persistence;
@@ -10,7 +11,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddApplicationServices();
 builder.Services.AddPersistenceServices();
-
+builder.Services.AddInfrastructureServices();
 builder.Services.AddHttpContextAccessor();
 
 
